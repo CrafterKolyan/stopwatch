@@ -61,48 +61,70 @@
         return hours.toString() + ":" + zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2) + "." + zeroPad(milliseconds, 3)
       }
 
-      function updateTime(time_passed) {
-        document.getElementById("stopwatch").textContent = prettyTime(time_passed)
+      function updateTime(stopwatch, time_passed) {
+        document.getElementById("stopwatch-time" + stopwatch.id).textContent = prettyTime(time_passed)
       }
 
-      function updateStopwatch() {
-          let time_passed = Date.now() - window.stopwatch_start_time
-          updateTime(time_passed)
+      function updateStopwatch(stopwatch) {
+          let time_passed = Date.now() - stopwatch.start_time
+          updateTime(stopwatch, time_passed)
       }
 
-      function startStopwatch() {
-        if (typeof stopwatch_start_time === 'undefined') {
-          window.stopwatch_start_time = Date.now()
-          window.stopwatch_interval = setInterval(updateStopwatch, 13)
-          document.getElementById("start").disabled = true
-          document.getElementById("stop").disabled = false
-        }
+      function startStopwatch(element) {
+        let id = element.getAttribute("data-id")
+        let stopwatch = window.stopwatches.find(stopwatch => stopwatch.id = id)
+        stopwatch.start_time = Date.now()
+        stopwatch.interval = setInterval(() => updateStopwatch(stopwatch), 13)
+        document.getElementById("start" + id).disabled = true
+        document.getElementById("stop" + id).disabled = false
       }
 
-      function stopStopwatch() {
-        if (typeof stopwatch_start_time !== 'undefined') {
-          updateStopwatch()
-          clearInterval(window.stopwatch_interval)
-          delete window.stopwatch_interval
-          delete window.stopwatch_start_time
-          document.getElementById("stop").disabled = true
-          document.getElementById("start").disabled = false
-        }
+      function stopStopwatch(element) {
+        let id = element.getAttribute("data-id")
+        let stopwatch = window.stopwatches.find(stopwatch => stopwatch.id = id)
+        updateStopwatch(stopwatch)
+        clearInterval(stopwatch.interval)
+
+        stopwatch.start_time = undefined
+        stopwatch.interval = undefined
+
+        document.getElementById("stop" + id).disabled = true
+        document.getElementById("start" + id).disabled = false
       }
 
-      updateTime(0)
+      function addStopwatch() {
+        let id = window.stopwatches.length
+        let stopwatch = document.createElement("div")
+        let stopwatch_container = document.getElementById("stopwatch-container")
+        stopwatch_container.appendChild(stopwatch)
+        stopwatch.outerHTML = '<div class="stopwatch"> \
+            <h2 id="stopwatch-time' + id + '" class="stopwatch-time">0:00:00.000</h2> \
+            <button id="start' + id + '" onmousedown="startStopwatch(this)" ontouchstart="startStopwatch(this)" data-id="' + id + '">Start</button> \
+            <button id="stop' + id + '" onmousedown="stopStopwatch(this)" ontouchstart="stopStopwatch(this)" data-id="' + id + '" disabled>Stop</button> \
+          </div>'
+
+        window.stopwatches.push({
+          id: id,
+          start_time: undefined,
+          interval: undefined,
+          node: stopwatch_container.lastChild
+        })
+      }
+
+      function initialize () {
+        window.stopwatches = []
+        addStopwatch()
+        updateTime(stopwatches[0], 0)
+      }
     </script>
   </head>
   <body>
     <center>
         <h1>Stopwatch</h1>
-        <div class="container">
-          <div class="stopwatch">
-            <h2 id="stopwatch" class="stopwatch-time">0:00:00.000</h2>
-            <button id="start" onmousedown="startStopwatch()" ontouchstart="startStopwatch()">Start</button>
-            <button id="stop" onmousedown="stopStopwatch()" ontouchstart="stopStopwatch()" disabled>Stop</button>
-          </div>
-        </div>
+        <div id="stopwatch-container" class="container"></div>
     </center>
   </body>
+  <script>
+    initialize()
+  </script>
 </html>
