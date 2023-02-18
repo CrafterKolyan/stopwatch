@@ -49,10 +49,12 @@
       }
 
       function stopTimer() {
+        if (typeof timer_start_time !== 'undefined') {
           updateTimer()
           clearInterval(window.timer_interval)
           delete window.timer_interval
           delete window.timer_start_time
+        }
       }
 
       updateTime(0)
