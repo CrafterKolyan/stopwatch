@@ -56,8 +56,8 @@
         if (typeof stopwatch_start_time === 'undefined') {
           window.stopwatch_start_time = Date.now()
           window.stopwatch_interval = setInterval(updateStopwatch, 13)
-          document.getElementById("start").setAttribute("disabled", true)
-          document.getElementById("stop").removeAttribute("disabled")
+          document.getElementById("start").disabled = true
+          document.getElementById("stop").disabled = false
         }
       }
 
@@ -67,8 +67,8 @@
           clearInterval(window.stopwatch_interval)
           delete window.stopwatch_interval
           delete window.stopwatch_start_time
-          document.getElementById("stop").setAttribute("disabled", true)
-          document.getElementById("start").removeAttribute("disabled")
+          document.getElementById("stop").disabled = true
+          document.getElementById("start").disabled = false
         }
       }
 
