@@ -23,6 +23,14 @@
         margin: 0.25rem;
       }
 
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
       .stopwatch-time {
         font-size: 3rem;
         margin: auto;
@@ -34,8 +42,6 @@
         border: 1px solid;
         border-radius: 0.75rem;
         padding: 0.375rem 0.75rem;
-        display: flex;
-        flex-wrap: wrap;
       }
     </style>
 
@@ -90,7 +96,7 @@
   <body>
     <center>
         <h1>Stopwatch</h1>
-        <div class="stopwatch">
+        <div class="stopwatch container">
           <h2 id="stopwatch" class="stopwatch-time">0:00:00.000</h2>
           <button id="start" onmousedown="startStopwatch()" ontouchstart="startStopwatch()">Start</button>
           <button id="stop" onmousedown="stopStopwatch()" ontouchstart="stopStopwatch()" disabled>Stop</button>
