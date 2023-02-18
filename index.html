@@ -42,14 +42,17 @@
       }
 
       function startTimer() {
+        if (typeof timer_start_time === 'undefined') {
           window.timer_start_time = Date.now()
           window.timer_interval = setInterval(updateTimer, 13)
+        }
       }
 
       function stopTimer() {
           updateTimer()
           clearInterval(window.timer_interval)
           delete window.timer_interval
+          delete window.timer_start_time
       }
 
       updateTime(0)
