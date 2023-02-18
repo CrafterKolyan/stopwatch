@@ -20,10 +20,18 @@
         padding: 0.375rem 0.75rem;
         border: 1px solid;
         border-radius: 0.25rem;
+        margin: 0.25rem;
+      }
+
+      .stopwatch-time {
+        font-size: 3rem;
       }
 
       .stopwatch {
-        font-size: 3rem;
+        border: 1px solid;
+        border-radius: 0.75rem;
+        display: table;
+        padding: 1rem;
       }
     </style>
 
@@ -78,9 +86,11 @@
   <body>
     <center>
         <h1>Stopwatch</h1>
-        <h2 id="stopwatch" class="stopwatch">0:00:00.000</h2>
-        <button id="start" onmousedown="startStopwatch()" ontouchstart="startStopwatch()">Start</button>
-        <button id="stop" onmousedown="stopStopwatch()" ontouchstart="stopStopwatch()" disabled>Stop</button>
+        <div class="stopwatch">
+          <h2 id="stopwatch" class="stopwatch-time">0:00:00.000</h2>
+          <button id="start" onmousedown="startStopwatch()" ontouchstart="startStopwatch()">Start</button>
+          <button id="stop" onmousedown="stopStopwatch()" ontouchstart="stopStopwatch()" disabled>Stop</button>
+        </div>
     </center>
   </body>
 </html>
