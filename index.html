@@ -72,7 +72,7 @@
 
       function startStopwatch(element) {
         let id = element.getAttribute("data-id")
-        let stopwatch = window.stopwatches.find(stopwatch => stopwatch.id = id)
+        let stopwatch = window.stopwatches.find(stopwatch => stopwatch.id == id)
         stopwatch.start_time = Date.now()
         stopwatch.interval = setInterval(() => updateStopwatch(stopwatch), 13)
         document.getElementById("start" + id).disabled = true
@@ -81,7 +81,7 @@
 
       function stopStopwatch(element) {
         let id = element.getAttribute("data-id")
-        let stopwatch = window.stopwatches.find(stopwatch => stopwatch.id = id)
+        let stopwatch = window.stopwatches.find(stopwatch => stopwatch.id == id)
         updateStopwatch(stopwatch)
         clearInterval(stopwatch.interval)
 
