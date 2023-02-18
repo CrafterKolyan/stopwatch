@@ -127,9 +127,9 @@
         stopwatch_container.appendChild(stopwatch)
         stopwatch.outerHTML = '<div class="stopwatch"> \
             <h2 id="stopwatch-time' + id + '" class="stopwatch-time">0:00:00.000</h2> \
-            <button id="start' + id + '" onmousedown="startStopwatch(this)" ontouchstart="startStopwatch(this)" data-id="' + id + '">Start</button> \
-            <button id="stop' + id + '" onmousedown="stopStopwatch(this)" ontouchstart="stopStopwatch(this)" data-id="' + id + '" disabled>Stop</button> \
-            <button id="reset' + id + '" onmousedown="resetStopwatch(this)" ontouchstart="resetStopwatch(this)" data-id="' + id + '" disabled>Reset</button> \
+            <button id="start' + id + '" onmousedown="startStopwatch(this)" ontouchstart="startStopwatch(this)" onclick="startStopwatch(this)" ontouch="startStopwatch(this)" data-id="' + id + '">Start</button> \
+            <button id="stop' + id + '" onmousedown="stopStopwatch(this)" ontouchstart="stopStopwatch(this)" onclick="stopStopwatch(this)" ontouch="stopStopwatch(this)" data-id="' + id + '" disabled>Stop</button> \
+            <button id="reset' + id + '" onmousedown="resetStopwatch(this)" ontouchstart="resetStopwatch(this)" onclick="resetStopwatch(this)" ontouch="resetStopwatch(this)" data-id="' + id + '" disabled>Reset</button> \
           </div>'
 
         window.stopwatches.push({
