@@ -15,10 +15,46 @@
         word-wrap: break-word;
       }
     </style>
+
+    <script>
+      function zeroPad(num, places) {
+        var zeros = places - num.toString().length + 1;
+        return Array(+(zeros > 0 && zeros)).join("0") + num.toString();
+      }
+
+      function prettyTime(milliseconds) {
+        let seconds = milliseconds / 1000
+        let minutes = seconds / 60
+        let hours = Math.floor(minutes / 60)
+        minutes = Math.floor(minutes % 60)
+        seconds = Math.floor(seconds % 60)
+        milliseconds = Math.floor(milliseconds % 1000)
+        return hours.toString() + ":" + zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2) + "." + zeroPad(milliseconds, 3)
+      }
+
+      function updateTimer() {
+          let time_passed = Date.now() - window.timer_start_time
+          document.getElementById("timer").textContent = prettyTime(time_passed)
+      }
+
+      function startTimer() {
+          window.timer_start_time = Date.now()
+          window.timer_interval = setInterval(updateTimer, 13)
+      }
+
+      function stopTimer() {
+          updateTimer()
+          clearInterval(window.timer_interval)
+          delete window.timer_interval
+      }
+    </script>
   </head>
   <body>
     <center>
-      <h1>Timer</h1>
+        <h1>Timer</h1>
+        <h2 id="timer">00:00:00.000<h2>
+        <button onmousedown="startTimer()" ontouchstart="startTimer()">Start</button>
+        <button onmousedown="stopTimer()" ontouchstart="stopTimer()">Stop</button>
     </center>
   </body>
 </html>
