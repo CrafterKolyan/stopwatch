@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Timer | crafterkolyan.github.io</title>
+    <title>Stopwatch | crafterkolyan.github.io</title>
 
     <meta charset="UTF-8">
-    <meta name="description" content="Timer, Static Web Applications, Open Offline Web Applications">
-    <meta name="keywords" content="Timer, Static, Web, Application, Open, Offline">
+    <meta name="description" content="Stopwatch, Static Web Applications, Open Offline Web Applications">
+    <meta name="keywords" content="Stopwatch, Static, Web, Application, Open, Offline">
     <meta name="author" content="CrafterKolyan">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -33,27 +33,27 @@
       }
 
       function updateTime(time_passed) {
-        document.getElementById("timer").textContent = prettyTime(time_passed)
+        document.getElementById("stopwatch").textContent = prettyTime(time_passed)
       }
 
-      function updateTimer() {
-          let time_passed = Date.now() - window.timer_start_time
+      function updateStopwatch() {
+          let time_passed = Date.now() - window.stopwatch_start_time
           updateTime(time_passed)
       }
 
-      function startTimer() {
-        if (typeof timer_start_time === 'undefined') {
-          window.timer_start_time = Date.now()
-          window.timer_interval = setInterval(updateTimer, 13)
+      function startStopwatch() {
+        if (typeof stopwatch_start_time === 'undefined') {
+          window.stopwatch_start_time = Date.now()
+          window.stopwatch_interval = setInterval(updateStopwatch, 13)
         }
       }
 
-      function stopTimer() {
-        if (typeof timer_start_time !== 'undefined') {
-          updateTimer()
-          clearInterval(window.timer_interval)
-          delete window.timer_interval
-          delete window.timer_start_time
+      function stopStopwatch() {
+        if (typeof stopwatch_start_time !== 'undefined') {
+          updateStopwatch()
+          clearInterval(window.stopwatch_interval)
+          delete window.stopwatch_interval
+          delete window.stopwatch_start_time
         }
       }
 
@@ -62,10 +62,10 @@
   </head>
   <body>
     <center>
-        <h1>Timer</h1>
-        <h2 id="timer">0:00:00.000<h2>
-        <button onmousedown="startTimer()" ontouchstart="startTimer()">Start</button>
-        <button onmousedown="stopTimer()" ontouchstart="stopTimer()">Stop</button>
+        <h1>Stopwatch</h1>
+        <h2 id="stopwatch">0:00:00.000<h2>
+        <button onmousedown="startStopwatch()" ontouchstart="startStopwatch()">Start</button>
+        <button onmousedown="stopStopwatch()" ontouchstart="stopStopwatch()">Stop</button>
     </center>
   </body>
 </html>
