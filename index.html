@@ -56,6 +56,8 @@
         if (typeof stopwatch_start_time === 'undefined') {
           window.stopwatch_start_time = Date.now()
           window.stopwatch_interval = setInterval(updateStopwatch, 13)
+          document.getElementById("start").setAttribute("disabled", true)
+          document.getElementById("stop").setAttribute("disabled", false)
         }
       }
 
@@ -65,6 +67,8 @@
           clearInterval(window.stopwatch_interval)
           delete window.stopwatch_interval
           delete window.stopwatch_start_time
+          document.getElementById("stop").setAttribute("disabled", true)
+          document.getElementById("start").setAttribute("disabled", false)
         }
       }
 
@@ -75,8 +79,8 @@
     <center>
         <h1>Stopwatch</h1>
         <h2 id="stopwatch" class="stopwatch">0:00:00.000<h2>
-        <button onmousedown="startStopwatch()" ontouchstart="startStopwatch()">Start</button>
-        <button onmousedown="stopStopwatch()" ontouchstart="stopStopwatch()">Stop</button>
+        <button id="start" onmousedown="startStopwatch()" ontouchstart="startStopwatch()">Start</button>
+        <button id="stop" onmousedown="stopStopwatch()" ontouchstart="stopStopwatch()" disabled>Stop</button>
     </center>
   </body>
 </html>
