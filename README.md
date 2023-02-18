@@ -1,3 +1,3 @@
-# [Timer](https://crafterkolyan.github.io/timer)
+# [Stopwatch](https://crafterkolyan.github.io/stopwatch)
 
-Static web application for timer
+Static web application for stopwatch
