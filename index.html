@@ -33,7 +33,7 @@
 
       .line-break {
         width: 100%;
-        height: 0rem;
+        height: 1rem;
       }
 
       .stopwatch-time {
@@ -101,11 +101,13 @@
   <body>
     <center>
         <h1>Stopwatch</h1>
-        <div class="stopwatch container">
-          <h2 id="stopwatch" class="stopwatch-time">0:00:00.000</h2>
-          <div class="line-break"></div>
-          <button id="start" onmousedown="startStopwatch()" ontouchstart="startStopwatch()">Start</button>
-          <button id="stop" onmousedown="stopStopwatch()" ontouchstart="stopStopwatch()" disabled>Stop</button>
+        <div class="container">
+          <div class="stopwatch">
+            <h2 id="stopwatch" class="stopwatch-time">0:00:00.000</h2>
+            <div class="line-break"></div>
+            <button id="start" onmousedown="startStopwatch()" ontouchstart="startStopwatch()">Start</button>
+            <button id="stop" onmousedown="stopStopwatch()" ontouchstart="stopStopwatch()" disabled>Stop</button>
+          </div>
         </div>
     </center>
   </body>
