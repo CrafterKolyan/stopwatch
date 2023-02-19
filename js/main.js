@@ -20,7 +20,7 @@ function updateTime(stopwatch, time_passed) {
 function updateStopwatch(stopwatch) {
   let time_passed = stopwatch.time_passed
   let current_time = Date.now()
-  if (typeof stopwatch.start_time !== "undefined") {
+  if (stopwatch.isStarted) {
     time_passed += current_time - stopwatch.start_time
   }
   updateTime(stopwatch, time_passed)
@@ -30,6 +30,7 @@ function updateStopwatch(stopwatch) {
 function startStopwatch(element) {
   let id = element.getAttribute("data-id")
   let stopwatch = window.stopwatches.find((stopwatch) => stopwatch.id == id)
+  stopwatch.isStarted = true
   stopwatch.start_time = Date.now()
   stopwatch.interval = setInterval(() => updateStopwatch(stopwatch), 13)
   document.getElementById("start" + id).disabled = true
@@ -43,11 +44,12 @@ function stopStopwatch(element) {
   let current_time = updateStopwatch(stopwatch)
   clearInterval(stopwatch.interval)
 
-  if (typeof stopwatch.start_time !== "undefined") {
+  if (stopwatch.isStarted) {
     stopwatch.time_passed += current_time - stopwatch.start_time
   }
-  stopwatch.start_time = undefined
   stopwatch.interval = undefined
+  stopwatch.start_time = undefined
+  stopwatch.isStarted = false
   updateStopwatch(stopwatch)
 
   document.getElementById("stop" + id).disabled = true
@@ -90,6 +92,7 @@ function addStopwatch() {
 
   window.stopwatches.push({
     id: id,
+    isStarted: false,
     start_time: undefined,
     interval: undefined,
     time_passed: 0,
