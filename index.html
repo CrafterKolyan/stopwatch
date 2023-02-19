@@ -11,7 +11,7 @@
 
     <style>
       body {
-        font-family: -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-family: "SF Mono";
         word-wrap: break-word;
       }
 
@@ -21,6 +21,10 @@
         border: 1px solid;
         border-radius: 0.25rem;
         margin: 0.25rem;
+      }
+
+      .center {
+        text-align: center;
       }
 
       .container {
@@ -127,9 +131,9 @@
         stopwatch_container.appendChild(stopwatch)
         stopwatch.outerHTML = '<div class="stopwatch"> \
             <h2 id="stopwatch-time' + id + '" class="stopwatch-time">0:00:00.000</h2> \
-            <button id="start' + id + '" onmousedown="startStopwatch(this)" ontouchstart="startStopwatch(this)" onclick="startStopwatch(this)" ontouch="startStopwatch(this)" data-id="' + id + '">Start</button> \
-            <button id="stop' + id + '" onmousedown="stopStopwatch(this)" ontouchstart="stopStopwatch(this)" onclick="stopStopwatch(this)" ontouch="stopStopwatch(this)" data-id="' + id + '" disabled>Stop</button> \
-            <button id="reset' + id + '" onmousedown="resetStopwatch(this)" ontouchstart="resetStopwatch(this)" onclick="resetStopwatch(this)" ontouch="resetStopwatch(this)" data-id="' + id + '" disabled>Reset</button> \
+            <button id="start' + id + '" onmousedown="startStopwatch(this)" ontouchstart="startStopwatch(this)" data-id="' + id + '">Start</button> \
+            <button id="stop' + id + '" onmousedown="stopStopwatch(this)" ontouchstart="stopStopwatch(this)" data-id="' + id + '" disabled>Stop</button> \
+            <button id="reset' + id + '" onmousedown="resetStopwatch(this)" ontouchstart="resetStopwatch(this)" data-id="' + id + '" disabled>Reset</button> \
           </div>'
 
         window.stopwatches.push({
@@ -151,9 +155,9 @@
   </head>
   <body>
     <center>
-        <h1>Stopwatch</h1>
-        <div id="stopwatch-container" class="inline-container"></div>
-        <button id="add-stopwatch" class="add-stopwatch container" onclick="addStopwatch()" ontouch="addStopwatch()">Add stopwatch</div>
+      <h1>Stopwatch</h1>
+      <div id="stopwatch-container" class="inline-container"></div>
+      <button id="add-stopwatch" class="add-stopwatch container" onclick="addStopwatch()" ontouch="addStopwatch()">Add stopwatch</button>
     </center>
   </body>
   <script>
