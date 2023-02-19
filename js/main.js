@@ -34,7 +34,7 @@ function startOrSplitStopwatch(element) {
     stopwatch.isStarted = true
     stopwatch.start_time = Date.now()
     stopwatch.interval = setInterval(() => updateStopwatch(stopwatch), 13)
-    document.getElementById("startSplit" + id).textContent = "Split"
+    document.getElementById("start-split" + id).textContent = "Split"
     document.getElementById("stop" + id).disabled = false
     document.getElementById("reset" + id).disabled = true
   } else {
