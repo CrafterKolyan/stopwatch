@@ -94,14 +94,17 @@ function addStopwatch() {
     return listeners
   }
 
-  // prettier-ignore
   stopwatch.outerHTML = '\
   <div class="stopwatch"> \
-    <h2 id="stopwatch-time' + id + '" class="stopwatch-time">0:00:00.000</h2> \
-    <button id="start-split' + id + '" ' + onListeners(startOrSplitStopwatch) + ' data-id="' + id + '" class="start">Start</button> \
-    <button id="stop' + id + '" ' + onListeners(stopStopwatch) + ' data-id="' + id + '" disabled>Stop</button> \
-    <button id="reset' + id + '" ' + onListeners(resetStopwatch) + ' data-id="' + id + '" disabled>Reset</button> \
+    <h2 id="stopwatch-time$1" class="stopwatch-time">0:00:00.000</h2> \
+    <button id="start-split$1" $2 data-id="$1" class="start">Start</button> \
+    <button id="stop$1" $3 data-id="$1" disabled>Stop</button> \
+    <button id="reset$1" $4 data-id="$1" disabled>Reset</button> \
   </div>'
+    .replaceAll("$1", id.toString())
+    .replaceAll("$2", onListeners(startOrSplitStopwatch))
+    .replaceAll("$3", onListeners(stopStopwatch))
+    .replaceAll("$4", onListeners(resetStopwatch))
 
   let node = stopwatch_container.childNodes[stopwatch_container.childNodes.length - 1]
   let nodeTime = node.firstChild
