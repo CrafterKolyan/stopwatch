@@ -12,7 +12,7 @@ button {
   margin: 0.25rem;
 }
 
-button .start {
+button.start {
   width: 3.25rem;
 }
 
