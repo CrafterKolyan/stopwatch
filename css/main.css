@@ -12,6 +12,10 @@ button {
   margin: 0.25rem;
 }
 
+button .start {
+  width: 3.25rem;
+}
+
 .center {
   text-align: center;
 }
