@@ -62,7 +62,7 @@ function stopStopwatch(element) {
   updateStopwatch(stopwatch)
 
   document.getElementById("stop" + id).disabled = true
-  document.getElementById("startSplit" + id).textContent = "Start"
+  document.getElementById("start-split" + id).textContent = "Start"
   document.getElementById("reset" + id).disabled = false
 }
 
