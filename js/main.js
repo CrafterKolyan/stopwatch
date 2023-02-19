@@ -27,15 +27,24 @@ function updateStopwatch(stopwatch) {
   return current_time
 }
 
-function startStopwatch(element) {
+function startOrSplitStopwatch(element) {
   let id = element.getAttribute("data-id")
   let stopwatch = window.stopwatches.find((stopwatch) => stopwatch.id == id)
-  stopwatch.isStarted = true
-  stopwatch.start_time = Date.now()
-  stopwatch.interval = setInterval(() => updateStopwatch(stopwatch), 13)
-  document.getElementById("start" + id).disabled = true
-  document.getElementById("stop" + id).disabled = false
-  document.getElementById("reset" + id).disabled = true
+  if (!stopwatch.isStarted) {
+    stopwatch.isStarted = true
+    stopwatch.start_time = Date.now()
+    stopwatch.interval = setInterval(() => updateStopwatch(stopwatch), 13)
+    document.getElementById("startSplit" + id).textContent = "Split"
+    document.getElementById("stop" + id).disabled = false
+    document.getElementById("reset" + id).disabled = true
+  } else {
+    let current_time = updateStopwatch(stopwatch)
+    let split_time = current_time - stopwatch.start_time
+    let split = document.createElement("h2")
+    split.setAttribute("class", "stopwatch-time")
+    split.textContent = prettyTime(split_time)
+    stopwatch.node.insertBefore(split, stopwatch.nodeTime)
+  }
 }
 
 function stopStopwatch(element) {
@@ -53,7 +62,7 @@ function stopStopwatch(element) {
   updateStopwatch(stopwatch)
 
   document.getElementById("stop" + id).disabled = true
-  document.getElementById("start" + id).disabled = false
+  document.getElementById("startSplit" + id).textContent = "Start"
   document.getElementById("reset" + id).disabled = false
 }
 
@@ -65,7 +74,6 @@ function resetStopwatch(element) {
   updateStopwatch(stopwatch)
 
   document.getElementById("reset" + id).disabled = true
-  document.getElementById("start" + id).innerText = "Start"
 }
 
 function addStopwatch() {
@@ -85,10 +93,13 @@ function addStopwatch() {
   // prettier-ignore
   stopwatch.outerHTML = '<div class="stopwatch"> \
             <h2 id="stopwatch-time' + id + '" class="stopwatch-time">0:00:00.000</h2> \
-            <button id="start' + id + '" ' + onListeners(startStopwatch) + ' data-id="' + id + '">Start</button> \
+            <button id="start-split' + id + '" ' + onListeners(startOrSplitStopwatch) + ' data-id="' + id + '">Start</button> \
             <button id="stop' + id + '" ' + onListeners(stopStopwatch) + ' data-id="' + id + '" disabled>Stop</button> \
             <button id="reset' + id + '" ' + onListeners(resetStopwatch) + ' data-id="' + id + '" disabled>Reset</button> \
           </div>'
+
+  let node = stopwatch_container.childNodes[stopwatch_container.childNodes.length - 1]
+  let nodeTime = node.childNodes[0]
 
   window.stopwatches.push({
     id: id,
@@ -96,7 +107,8 @@ function addStopwatch() {
     start_time: undefined,
     interval: undefined,
     time_passed: 0,
-    node: stopwatch_container.childNodes[stopwatch_container.childNodes.length - 2]
+    node: node,
+    nodeTime: nodeTime
   })
 }
 
