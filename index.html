@@ -3,15 +3,16 @@
   <head>
     <title>Stopwatch | crafterkolyan.github.io</title>
 
-    <meta charset="UTF-8">
-    <meta name="description" content="Stopwatch | Static Web Applications">
-    <meta name="keywords" content="Stopwatch, Static, Web, Application, Open, Offline">
-    <meta name="author" content="CrafterKolyan">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="description" content="Stopwatch | Static Web Applications" />
+    <meta name="keywords" content="Stopwatch, Static, Web, Application, Open, Offline" />
+    <meta name="author" content="CrafterKolyan" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <style>
       body {
-        font-family: -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
+          sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         word-wrap: break-word;
       }
 
@@ -27,7 +28,8 @@
         text-align: center;
       }
 
-      .center > div, .center > button {
+      .center > div,
+      .center > button {
         margin-left: auto;
         margin-right: auto;
       }
@@ -62,8 +64,8 @@
 
     <script>
       function zeroPad(num, places) {
-        var zeros = places - num.toString().length + 1;
-        return Array(+(zeros > 0 && zeros)).join("0") + num.toString();
+        var zeros = places - num.toString().length + 1
+        return Array(+(zeros > 0 && zeros)).join("0") + num.toString()
       }
 
       function prettyTime(milliseconds) {
@@ -92,7 +94,7 @@
 
       function startStopwatch(element) {
         let id = element.getAttribute("data-id")
-        let stopwatch = window.stopwatches.find(stopwatch => stopwatch.id == id)
+        let stopwatch = window.stopwatches.find((stopwatch) => stopwatch.id == id)
         stopwatch.start_time = Date.now()
         stopwatch.interval = setInterval(() => updateStopwatch(stopwatch), 13)
         document.getElementById("start" + id).disabled = true
@@ -102,7 +104,7 @@
 
       function stopStopwatch(element) {
         let id = element.getAttribute("data-id")
-        let stopwatch = window.stopwatches.find(stopwatch => stopwatch.id == id)
+        let stopwatch = window.stopwatches.find((stopwatch) => stopwatch.id == id)
         let current_time = updateStopwatch(stopwatch)
         clearInterval(stopwatch.interval)
 
@@ -120,7 +122,7 @@
 
       function resetStopwatch(element) {
         let id = element.getAttribute("data-id")
-        let stopwatch = window.stopwatches.find(stopwatch => stopwatch.id == id)
+        let stopwatch = window.stopwatches.find((stopwatch) => stopwatch.id == id)
 
         stopwatch.time_passed = 0
         updateStopwatch(stopwatch)
@@ -156,7 +158,7 @@
         })
       }
 
-      function initialize () {
+      function initialize() {
         window.stopwatches = []
         window.add_stopwatch_node = document.getElementById("add-stopwatch")
         addStopwatch()
@@ -168,7 +170,9 @@
     <div class="center">
       <h1>Stopwatch</h1>
       <div id="stopwatch-container" class="inline-container"></div>
-      <button id="add-stopwatch" class="add-stopwatch container" onclick="addStopwatch()" ontouch="addStopwatch()">Add stopwatch</button>
+      <button id="add-stopwatch" class="add-stopwatch container" onclick="addStopwatch()" ontouch="addStopwatch()">
+        Add stopwatch
+      </button>
     </div>
   </body>
   <script>
