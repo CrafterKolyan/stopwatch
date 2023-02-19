@@ -139,9 +139,13 @@
 
         function onListeners(f) {
           let function_name = f.name
-          return 'onmousedown="' + function_name + '(this)" ontouchstart="' + function_name + '(this)" onclick="' + function_name + '(this)" ontouch="' + function_name + '(this)"'
+          let listeners = ["onmousedown", "ontouchstart", "onclick", "ontouch"]
+            .map((event) => event + '="' + function_name + '(this)"')
+            .join(" ")
+          return listeners
         }
 
+        // prettier-ignore
         stopwatch.outerHTML = '<div class="stopwatch"> \
             <h2 id="stopwatch-time' + id + '" class="stopwatch-time">0:00:00.000</h2> \
             <button id="start' + id + '" ' + onListeners(startStopwatch) + ' data-id="' + id + '">Start</button> \
