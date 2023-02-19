@@ -88,7 +88,7 @@ function addStopwatch() {
 
   function onListeners(f) {
     let function_name = f.name
-    let listeners = ["onmousedown", "ontouchstart", "onclick", "ontouch"]
+    let listeners = ["onmousedown", "ontouchstart", "onkeydown"]
       .map((event) => event + '="' + function_name + '(this)"')
       .join(" ")
     return listeners
