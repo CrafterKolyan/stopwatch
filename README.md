@@ -6,5 +6,6 @@ Website: [https://crafterkolyan.github.io/stopwatch](https://crafterkolyan.githu
 
 ## Features
 - Accuracy: 1ms
+- Split times
 - Resume stopwatch after stopping it
 - Can create as many stopwatches as you want
