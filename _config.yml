@@ -1,6 +1,2 @@
-title: Stopwatch
-css: css/main.css
-javascript: js/main.js
-
 exclude:
   - README.md
