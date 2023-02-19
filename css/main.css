@@ -1,0 +1,50 @@
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  word-wrap: break-word;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  margin: 0.25rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.center > div,
+.center > button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inline-container {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.stopwatch-time {
+  font-size: 3rem;
+  margin: auto;
+  margin-top: -0.5rem;
+}
+
+.stopwatch {
+  border: 1px solid;
+  border-radius: 0.75rem;
+  padding: 0.375rem 0.75rem;
+  margin: 0.25rem;
+}
