@@ -39,7 +39,7 @@ function startOrSplitStopwatch(element) {
     document.getElementById("reset" + id).disabled = true
   } else {
     let current_time = updateStopwatch(stopwatch)
-    let split_time = current_time - stopwatch.start_time + time_passed
+    let split_time = current_time - stopwatch.start_time + stopwatch.time_passed
     let split = document.createElement("h2")
     split.setAttribute("class", "stopwatch-time")
     split.textContent = prettyTime(split_time)
