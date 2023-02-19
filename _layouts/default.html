@@ -9,13 +9,8 @@
     <meta name="author" content="CrafterKolyan" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {% if page.css %}
-      <link rel="stylesheet" type="text/css" href="{{ page.css }}">
-    {% endif %}
-
-    {% if page.javascript %}
-      <script type="text/javascript" src="{{ page.javascript }}"></script>
-    {% endif %}
+    {% if page.css %}<link rel="stylesheet" type="text/css" href="{{ page.css }}">{% endif %}
+    {% if page.javascript %}<script type="text/javascript" src="{{ page.javascript }}"></script>{% endif %}
   </head>
   <body>
     {{ content }}
