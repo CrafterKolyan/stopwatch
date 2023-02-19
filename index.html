@@ -134,11 +134,17 @@
         let stopwatch = document.createElement("div")
         let stopwatch_container = document.getElementById("stopwatch-container")
         stopwatch_container.appendChild(stopwatch)
+
+        function onListeners(f) {
+          let function_name = f.name
+          return 'onmousedown="' + function_name + '(this)" ontouchstart="' + function_name + '(this)" onclick="' + function_name + '(this)" ontouch="' + function_name + '(this)"'
+        }
+
         stopwatch.outerHTML = '<div class="stopwatch"> \
             <h2 id="stopwatch-time' + id + '" class="stopwatch-time">0:00:00.000</h2> \
-            <button id="start' + id + '" onmousedown="startStopwatch(this)" ontouchstart="startStopwatch(this)" onclick="startStopwatch(this)" ontouch="startStopwatch(this)" data-id="' + id + '">Start</button> \
-            <button id="stop' + id + '" onmousedown="stopStopwatch(this)" ontouchstart="stopStopwatch(this)" onclick="stopStopwatch(this)" ontouch="stopStopwatch(this)" data-id="' + id + '" disabled>Stop</button> \
-            <button id="reset' + id + '" onmousedown="resetStopwatch(this)" ontouchstart="resetStopwatch(this)" onclick="resetStopwatch(this)" ontouch="resetStopwatch(this)" data-id="' + id + '" disabled>Reset</button> \
+            <button id="start' + id + '" ' + onListeners(startStopwatch) + ' data-id="' + id + '">Start</button> \
+            <button id="stop' + id + '" ' + onListeners(stopStopwatch) + ' data-id="' + id + '" disabled>Stop</button> \
+            <button id="reset' + id + '" ' + onListeners(resetStopwatch) + ' data-id="' + id + '" disabled>Reset</button> \
           </div>'
 
         window.stopwatches.push({
