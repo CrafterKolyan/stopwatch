@@ -99,7 +99,7 @@ function addStopwatch() {
           </div>'
 
   let node = stopwatch_container.childNodes[stopwatch_container.childNodes.length - 1]
-  let nodeTime = node.childNodes[0]
+  let nodeTime = node.firstChild
 
   window.stopwatches.push({
     id: id,
