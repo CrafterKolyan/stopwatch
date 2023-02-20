@@ -45,7 +45,7 @@ function startOrSplitStopwatch(element) {
     split.textContent = prettyTime(split_time)
 
     // Insert just after current time
-    stopwatch.node.insertBefore(split, stopwatch.nodeTime.nextSibling)
+    stopwatch.node.insertBefore(split, stopwatch.nodeTime.nextElementSibling)
   }
 }
 
