@@ -101,7 +101,7 @@ function addStopwatch() {
         if (event === "onkeydown") {
           function_string = "onkeydownwrapper(" + function_string + ")"
         }
-        event + '="' + function_name + '(this)"'
+        return event + '="' + function_name + '(this)"'
       })
       .join(" ")
     return listeners
