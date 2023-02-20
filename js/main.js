@@ -76,7 +76,7 @@ function resetStopwatch(element) {
   updateStopwatch(stopwatch)
 
   Array.from(stopwatch.node.querySelectorAll(".stopwatch-time"))
-    .slice(0, -1)
+    .slice(1)
     .forEach((child) => stopwatch.node.removeChild(child))
   document.getElementById("reset" + id).disabled = true
 }
