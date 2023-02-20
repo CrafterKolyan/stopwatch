@@ -80,9 +80,9 @@ function resetStopwatch(element) {
 }
 
 function onkeydownwrapper(f) {
-  return function (event) {
+  return function (event, element) {
     if (event.key === "Enter" || event.key === " ") {
-      return f(event)
+      return f(event, element)
     }
   }
 }
@@ -97,11 +97,11 @@ function addStopwatch() {
     let function_name = f.name
     let listeners = ["onmousedown", "ontouchstart", "onkeydown"]
       .map((event) => {
-        let function_string = function_name
+        let function_call = function_name + "(this)"
         if (event === "onkeydown") {
-          function_string = "onkeydownwrapper(" + function_string + ")"
+          function_string = "onkeydownwrapper(" + function_string + ")(event, this)"
         }
-        return event + '="' + function_string + '(this)"'
+        return event + '="' + function_call
       })
       .join(" ")
     return listeners
