@@ -81,7 +81,7 @@ function resetStopwatch(element) {
 
 function onkeydownwrapper(f) {
   return function (event, element) {
-    if (event.key === "Enter" || event.key === " ") {
+    if (event.code === "Enter" || event.code === "Space" || event.code === "NumpadEnter") {
       return f(element)
     }
   }
