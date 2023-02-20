@@ -99,7 +99,7 @@ function addStopwatch() {
       .map((event) => {
         let function_call = function_name + "(this)"
         if (event === "onkeydown") {
-          function_string = "onkeydownwrapper(" + function_string + ")(event, this)"
+          function_call = "onkeydownwrapper(" + function_name + ")(event, this)"
         }
         return event + '="' + function_call
       })
