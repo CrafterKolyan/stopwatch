@@ -43,7 +43,9 @@ function startOrSplitStopwatch(element) {
     let split = document.createElement("h2")
     split.setAttribute("class", "stopwatch-time")
     split.textContent = prettyTime(split_time)
-    stopwatch.node.insertAfter(split, stopwatch.nodeTime)
+
+    // Insert just after current time
+    stopwatch.node.insertBefore(split, stopwatch.nodeTime.nextSibling)
   }
 }
 
