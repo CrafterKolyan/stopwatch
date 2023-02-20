@@ -120,7 +120,7 @@ function addStopwatch() {
     .replaceAll("$4", onListeners(resetStopwatch))
 
   let node = stopwatch_container.childNodes[stopwatch_container.childNodes.length - 1]
-  let nodeTime = node.firstElementChild
+  let nodeTime = node.lastElementChild
 
   window.stopwatches.push({
     id: id,
