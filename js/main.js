@@ -81,13 +81,6 @@ function resetStopwatch(element) {
   document.getElementById("reset" + id).disabled = true
 }
 
-function ontouchstartwrapper(f) {
-  return function (event, element) {
-    event.preventDefault()
-    return f(element)
-  }
-}
-
 function onkeydownwrapper(f) {
   return function (event, element) {
     if (event.code === "Enter" || event.code === "Space" || event.code === "NumpadEnter") {
@@ -104,13 +97,11 @@ function addStopwatch() {
 
   function onListeners(f) {
     let function_name = f.name
-    let listeners = ["onmousedown", "ontouchstart", "onkeydown"]
+    let listeners = ["onmousedown", "onkeydown"]
       .map((event) => {
         let function_call = function_name + "(this)"
         if (event === "onkeydown") {
           function_call = "onkeydownwrapper(" + function_name + ")(event, this)"
-        } else if (event === "ontouchstart") {
-          function_call = "ontouchstartwrapper(" + function_name + ")(event, this)"
         }
         return event + '="' + function_call + '"'
       })
