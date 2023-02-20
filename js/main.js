@@ -43,7 +43,7 @@ function startOrSplitStopwatch(element) {
     let split = document.createElement("h2")
     split.setAttribute("class", "stopwatch-time")
     split.textContent = prettyTime(split_time)
-    stopwatch.node.insertBefore(split, stopwatch.nodeTime)
+    stopwatch.node.insertAfter(split, stopwatch.nodeTime)
   }
 }
 
@@ -109,10 +109,10 @@ function addStopwatch() {
 
   stopwatch.outerHTML = '\
   <div class="stopwatch"> \
-    <h2 id="stopwatch-time$1" class="stopwatch-time">0:00:00.000</h2> \
     <button id="start-split$1" $2 data-id="$1" class="start">Start</button> \
     <button id="stop$1" $3 data-id="$1" disabled>Stop</button> \
     <button id="reset$1" $4 data-id="$1" disabled>Reset</button> \
+    <h2 id="stopwatch-time$1" class="stopwatch-time">0:00:00.000</h2> \
   </div>'
     .replaceAll("$1", id.toString())
     .replaceAll("$2", onListeners(startOrSplitStopwatch))
