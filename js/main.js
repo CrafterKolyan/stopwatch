@@ -79,6 +79,14 @@ function resetStopwatch(element) {
   document.getElementById("reset" + id).disabled = true
 }
 
+function onkeydownwrapper(f) {
+  return function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+      f(event)
+    }
+  }
+}
+
 function addStopwatch() {
   let id = window.stopwatches.length
   let stopwatch = document.createElement("div")
@@ -88,7 +96,13 @@ function addStopwatch() {
   function onListeners(f) {
     let function_name = f.name
     let listeners = ["onmousedown", "ontouchstart", "onkeydown"]
-      .map((event) => event + '="' + function_name + '(this)"')
+      .map((event) => {
+        let function_string = function_name
+        if (event === "onkeydown") {
+          function_string = "onkeydownwrapper(" + function_string + ")"
+        }
+        event + '="' + function_name + '(this)"'
+      })
       .join(" ")
     return listeners
   }
