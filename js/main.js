@@ -83,7 +83,7 @@ function resetStopwatch(element) {
 
 function ontouchstartwrapper(f) {
   return function (event, element) {
-    event.stopImmediatePropagation()
+    event.preventDefault()
     return f(element)
   }
 }
