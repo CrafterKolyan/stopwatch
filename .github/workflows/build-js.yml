@@ -1,0 +1,43 @@
+name: "Autobuild Javascript module"
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build_js:
+    name: "Build main Javascript module"
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout to workspace
+      uses: actions/checkout@v4
+
+    - name: Print all environment variables
+      run: printenv
+
+    - name: Install esbuild
+      run: |
+        npm install esbuild
+
+    - name: Build main Javascript module
+      run: |
+        npx esbuild src/main.ts --outfile=js/main.js --bundle
+
+    - name: Commit changed files
+      if: always()
+      run: |
+        git config --global user.name "Github Action"
+        git config --global user.email "action@github.com"
+        git add js/main.js && \
+        (git commit -m "[Github Action] Update js/main.js" || true) && \
+        git checkout . && \
+        git pull origin ${GITHUB_REF##*/} --rebase --strategy-option=ours
+
+    - name: Push changes
+      uses: ad-m/github-push-action@v0.8.0
+      with:
+        branch: ${{ github.ref }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}

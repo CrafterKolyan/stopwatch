@@ -1,0 +1,24 @@
+name: "Compile Typescript"
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  compile-typescript:
+    name: "Compile Typescript"
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout to workspace
+      uses: actions/checkout@v4
+
+    - name: Install tsc
+      run: |
+        npm install typescript
+
+    - name: Compile Typescript
+      run: |
+        npx tsc
