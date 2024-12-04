@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "module": "None",
+        "target": "ES6",
+        "moduleResolution": "Node",
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "allowJs": false,
+        "alwaysStrict": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noImplicitReturns": true,
+        "noImplicitOverride": true,
+        "noUnusedParameters": true,
+        "noUnusedLocals": true,
+        "noUncheckedSideEffectImports": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "exactOptionalPropertyTypes": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "strict": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "outFile": "js/main.js",
+        "lib": ["es2018", "dom"]
+    },
+    "files": [
+        "src/main.ts"
+    ]
+}

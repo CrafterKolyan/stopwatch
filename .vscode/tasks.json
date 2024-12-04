@@ -8,6 +8,14 @@
             "runOptions": {
                 "runOn": "folderOpen"
             }
+        },
+        {
+            "label": "Run autobuild",
+            "type": "shell",
+            "command": "npx esbuild src/main.ts --outfile=js/main.js --bundle --watch",
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
         }
     ]
 }
