@@ -1,21 +1,21 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Run server",
-            "type": "shell",
-            "command": "jekyll serve --host 0.0.0.0 --port 4000 --incremental",
-            "runOptions": {
-                "runOn": "folderOpen"
-            }
-        },
-        {
-            "label": "Run autobuild",
-            "type": "shell",
-            "command": "npx esbuild src/main.ts --outfile=js/main.js --bundle --watch",
-            "runOptions": {
-                "runOn": "folderOpen"
-            }
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run server",
+      "type": "shell",
+      "command": "jekyll serve --host 0.0.0.0 --port 4000 --incremental",
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "Run autobuild",
+      "type": "shell",
+      "command": "npx esbuild src/main.ts --outfile=js/main.js --bundle --watch",
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    }
+  ]
 }
