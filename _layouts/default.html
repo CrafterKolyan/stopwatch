@@ -4,13 +4,13 @@
     <title>{{ page.title }} | crafterkolyan.github.io</title>
 
     <meta charset="UTF-8" />
-    <meta name="description" content="{{ page.title }} | Static Web Applications" />
-    <meta name="keywords" content="{{ page.title }}, Static, Web, Application, Open, Offline" />
+    <meta name="description" content="{{ site.title }} | Static Web Applications" />
+    <meta name="keywords" content="{{ site.title }}, Static, Web, Application, Open, Offline" />
     <meta name="author" content="CrafterKolyan" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {% if page.css %}<link rel="stylesheet" type="text/css" href="{{ page.css }}">{% endif %}
-    {% if page.javascript %}<script type="text/javascript" src="{{ page.javascript }}"></script>{% endif %}
+    {% if page.css %}<link rel="stylesheet" type="text/css" href="{{ page.css }}?v={{ site.time }}">{% endif %}
+    {% if page.javascript %}<script type="text/javascript" src="{{ page.javascript }}?v={{ site.time }}"></script>{% endif %}
   </head>
   <body>
     {{ content }}
